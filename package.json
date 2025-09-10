@@ -2,23 +2,30 @@
   "name": "namastereact",
   "version": "1.0.0",
   "description": "This is Namaste React by Akshay Saini",
-  "main": "app.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nikhilsinghnikhil/Namaste-React.git"
   },
-  "keywords": [
-    "react",
-    "namaste",
-    "react"
-  ],
+  "keywords": [],
   "author": "Nikhil Singh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nikhilsinghnikhil/Namaste-React/issues"
   },
-  "homepage": "https://github.com/nikhilsinghnikhil/Namaste-React#readme"
+  "homepage": "https://github.com/nikhilsinghnikhil/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "browserslist" : [
+    "last 2 versions"
+  ]
 }
