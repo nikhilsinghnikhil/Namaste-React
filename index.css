@@ -6,7 +6,9 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
+    border-radius: 2px;
 }
+
 .logo{
     width: 100px;
 }
@@ -26,7 +28,7 @@
 .res-card {
     padding: 5px;
     width: 230px;
-    height:400px;
+    height:410px;
 }
 
 .res-container{
@@ -37,6 +39,7 @@
 .res-card:hover {
     border: 1px solid black;
     cursor: pointer;
+    border-radius: 8px;
 }
 
 .search {

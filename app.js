@@ -38,7 +38,7 @@ const Header = () => {
 // const Color = {
 //     backgroundColor : "Yellow"
 // };
-// manually se data ko pass karna.
+
 // const RestaurantCard = (props) => {
 //         return(
 //             <div className="res-card" style={{backgroundColor:"#f0f0f0"}}>
@@ -159,7 +159,7 @@ const resObj = {
 }
 
 
-// manually se data ko pass karna.
+//  se data ko pass karna.
 // const Body = () => {
 //     return(
 //         <div className="body">
