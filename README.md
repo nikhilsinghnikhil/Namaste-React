@@ -35,3 +35,9 @@
 *    - Address
 *    - Links
 */
+
+# React Hooks
+(Normal JS utility functions - written by facebook developers)
+- Two very imp hooks...
+    - useState() : SuperPowerful state variables in react.
+    - useEffect()
