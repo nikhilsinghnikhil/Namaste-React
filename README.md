@@ -41,3 +41,7 @@
 - Two very imp hooks...
     - useState() : SuperPowerful state variables in react.
     - useEffect()
+
+# 2 Types Routing in web apps
+- Client Side Routing
+- Server Side Routing
