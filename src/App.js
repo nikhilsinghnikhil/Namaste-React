@@ -1,45 +1,124 @@
-import React from "react";
+import "./index.css";
+
+import React, { lazy, Suspense, useEffect, useState, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
-import { createBrowserRouter , RouterProvider,Outlet} from "react-router-dom";
-import About from "./Components/About";
-import Contact from "./Components/Contact";
-import Error from "./Components/Error";
+import Submit from "./Components/Body";
+import Login from "./Components/Login";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+// import About from "./Components/About";
 
+import Error from "./Components/Error";
+import RestaurantMenu from "./Components/RestaurantMenu";
+import appStore from "./utils/appStore";
+import Register from "./Components/Register";
+import Cart from "./Components/Cart";
+
+// import Grocery from "./Components/Grocery";
+
+const Grocery = lazy(() => import("./Components/Grocery"));
+const About = lazy(() => import("./Components/About")); // Lazy loading = it creates a different bundle for himself. and it is loaded after requested.
+const Contact = lazy(() => import("./Components/Contact"));
 const AppLayout = () => {
-    return (
+  const [userName, setUserName] = useState();
+  //authentication
+  useEffect(() => {
+    //make an api call and send username and password.
+    const data = {
+      name: "Nikhil Singh",
+    };
+    setUserName(data.name);
+  }, []);
+
+  return (
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        {/* poore app ke andar hame username ko pass kar diya jo bhi value hoga 'userName' ka */}
         <div className="app">
-            <Header/>
-            <Outlet/>
+          <Header />
+          <Outlet />
         </div>
-    )
-}
-const appRouter = createBrowserRouter([
+      </UserContext.Provider>
+    </Provider>
+  );
+};
+
+// ✅ ✅ ✅ FIXED ROUTER WITH FUTURE FLAGS IN RIGHT PLACE
+const appRouter = createBrowserRouter(
+  [
     {
-        path : "/",
-        element : <AppLayout/>,
-        children: [
-    {
-        path:"/",
-        element : <Body/>,
+      path: "/",
+      element: <AppLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Body />,
+        },
+        {
+          path: "/menu",
+          element: <RestaurantMenu />,
+        },
+        {
+          path: "/about",
+          element: <About />,
+        },
+        {
+          path: "/signin",
+          element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
+        },
+        {
+          path: "/contact",
+          element: (
+            <Suspense fallback={<h1>Wait a minute...</h1>}>
+              <Contact />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/grocery",
+          element: (
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <Grocery />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/restaurants/:resId",
+          element: <RestaurantMenu />,
+        },
+        {
+          path: "/thank-you",
+          element: <Submit />,
+        },
+      ],
+      errorElement: <Error />,
     },
-    {
-        path:"/about",
-        element : <About/>,
+  ],
+  {
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+      v7_fetcherPersist: true,
+      v7_normalizeFormMethod: true,
+      v7_partialHydration: true,
+      v7_skipActionErrorRevalidation: true,
     },
-    {
-        path:"/contact",
-        element : <Contact/>,
-    },
- ],
-        errorElement : <Error/>
-    },
-    
-]);
+  }
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);
 
 // const Color = {
 //     backgroundColor : "Yellow"
@@ -65,49 +144,11 @@ root.render(<RouterProvider router={appRouter}/>);
 //             <div className="Search">Search</div>
 //             <div className="res-container">
 //                 <RestaurantCard resName = "Meghna Foods" cuisine ="Biryani , North Indian , Asian" rating = "4.4" deliveryTime = "38 minutes" image = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/aqsnrylokzpn45qhg1pb"/>
-//                 <RestaurantCard resName = "KFC" cuisine = "Burger , Indian , Slicy" rating = "4.3" deliveryTime = "20 minutes" image = "https://images.ctfassets.net/wtodlh47qxpt/4AcPJzGNNxfXiF1rWvlydj/2a8548a717ff678fbfb0d881b7367ba8/KFC-Gold-Burger-White-Category-23MAY_4.jpg"/>  
+//                 <RestaurantCard resName = "KFC" cuisine = "Burger , Indian , Slicy" rating = "4.3" deliveryTime = "20 minutes" image = "https://images.ctfassets.net/wtodlh47qxpt/4AcPJzGNNxfXiF1rWvlydj/2a8548a717ff678fbfb0d881b7367ba8/KFC-Gold-Burger-White-Category-23MAY_4.jpg"/>
 //             </div>
 //         </div>
 //     )
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //React Functional Components
 // const Title = () => (
@@ -137,17 +178,12 @@ root.render(<RouterProvider router={appRouter}/>);
 //     )
 // };
 
-
-
-
-
 // const heading = React.createElement("h1" , {id:"heading"} , "Namaste React 🚀");
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(heading);
 
 // const jsxHeading = <h1 id="heading">Namaste React using jsx 🚀</h1>;
 // root.render(jsxHeading);
-
 
 // const parent = React.createElement(
 //   "div",
@@ -174,5 +210,3 @@ root.render(<RouterProvider router={appRouter}/>);
 //         console.log(parent);  // it gives object.
 //         const root = ReactDOM.createRoot(document.getElementById("root"));
 //         root.render(parent);
-
-

@@ -1,11 +1,12 @@
 # Parcel
+
 - Dev Build
 - Local Server
 - HMR = Hot Module Replacement
 - File Watching Algorithm - written in C++
 - Caching - Faster Builds
-- Image Optimization 
-- Minification 
+- Image Optimization
+- Minification
 - Bundling
 - Compressing
 - Consistent Hashing
@@ -19,29 +20,48 @@
 
 # Food Ordering App
 
-/**
-*  Header 
-*    - logo 
-*    - Nav Items
-*  Body
-*    - Search component
-*    - Restorant-container
-*    - RestorantCard
-*        - img
-*        - Name of Res , Star Rating , cuisine , delivery time etc
-* Footer
-*    - Copyright
-*    - Contact us
-*    - Address
-*    - Links
-*/
+/\*\*
+
+- Header
+- - logo
+- - Nav Items
+- Body
+- - Search component
+- - Restorant-container
+- - RestorantCard
+-        - img
+-        - Name of Res , Star Rating , cuisine , delivery time etc
+- Footer
+- - Copyright
+- - Contact us
+- - Address
+- - Links
+    \*/
 
 # React Hooks
+
 (Normal JS utility functions - written by facebook developers)
+
 - Two very imp hooks...
-    - useState() : SuperPowerful state variables in react.
-    - useEffect()
+  - useState() : SuperPowerful state variables in react.
+  - useEffect()
 
 # 2 Types Routing in web apps
+
 - Client Side Routing
 - Server Side Routing
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- slice (cart slice)
+- dispatch(action)
+- selector
+
+# Types of testing (developer)
+
+- Unit Testing
+- Integration Testing
+- End to End Tesing - e2e Testing

@@ -1,4 +1,8 @@
-#heading{
+@import "tailwindcss";
+
+
+
+/* #heading{
     color: red;
 }
 
@@ -74,3 +78,13 @@
 .filter{
     display: flex;
 }
+
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.about_image{
+    height: 200px;
+    border: 1px solid black;
+} */
