@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./OfflineGame.css";
+import "./Offlinegame.css";
 
 const OfflineGame = () => {
   const [target] = useState(Math.floor(Math.random() * 10) + 1);
